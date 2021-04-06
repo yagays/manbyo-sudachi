@@ -1,0 +1,27 @@
+{
+    "userDict": ["/Users/yag_ays/dev/nlp/manbyo-sudachi/user_manbyo_sabc.dic"],
+    "characterDefinitionFile" : "/Users/yag_ays/.pyenv/versions/3.8.3/lib/python3.8/site-packages/sudachipy/resources/char.def",
+    "inputTextPlugin" : [
+        { "class" : "sudachipy.plugin.input_text.DefaultInputTextPlugin" },
+        { "class" : "sudachipy.plugin.input_text.ProlongedSoundMarkInputTextPlugin",
+          "prolongedSoundMarks": ["ー", "-", "⁓", "〜", "〰"],
+          "replacementSymbol": "ー"}
+    ],
+    "oovProviderPlugin" : [
+        { "class" : "sudachipy.plugin.oov.MeCabOovProviderPlugin",
+          "charDef" : "/Users/yag_ays/.pyenv/versions/3.8.3/lib/python3.8/site-packages/sudachipy/resources/char.def",
+          "unkDef" : "/Users/yag_ays/.pyenv/versions/3.8.3/lib/python3.8/site-packages/sudachipy/resources/unk.def" },
+        { "class" : "sudachipy.plugin.oov.SimpleOovProviderPlugin",
+          "oovPOS" : [ "補助記号", "一般", "*", "*", "*", "*" ],
+          "leftId" : 5968,
+          "rightId" : 5968,
+          "cost" : 3857 }
+    ],
+    "pathRewritePlugin" : [
+        { "class" : "sudachipy.plugin.path_rewrite.JoinNumericPlugin",
+          "enableNormalize" : true },
+        { "class" : "sudachipy.plugin.path_rewrite.JoinKatakanaOovPlugin",
+          "oovPOS" : [ "名詞", "普通名詞", "一般", "*", "*", "*" ],
+          "minLength": 3 }
+    ]
+}
